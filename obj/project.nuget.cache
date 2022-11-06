@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "vFMotHqMjlpRyO1hA/Iz04E8xp7nGhUp5iP+jbTndJ2SQygfSRYVdp1orZd+q7+HDXszl3JNKf9hDequbE3M8A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vedop\\Documents\\GitHub\\KursachBotRegata\\KursachBotRegata.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vedop\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\vedop\\.nuget\\packages\\npgsql\\6.0.7\\npgsql.6.0.7.nupkg.sha512",
+    "C:\\Users\\vedop\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
+    "C:\\Users\\vedop\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\vedop\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\vedop\\.nuget\\packages\\telegram.bot\\18.0.0\\telegram.bot.18.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
