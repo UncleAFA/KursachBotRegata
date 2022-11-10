@@ -15,29 +15,28 @@ namespace KursachBotRegata.Models
 
         public static IReadOnlyList<Command> Commands => commandsList.AsReadOnly();
 
-        public static async Task<TelegramBotClient> GetBotClientAsync(string Token, string Url)
+        public static async Task<TelegramBotClient> GetBotClientAsync()
         {
-            System.Console.WriteLine(Token);
-            System.Console.WriteLine(Url);
             if (botClient != null)
             {
                 return botClient;
             }
 
             commandsList = new List<Command>();
-            // commandsList.Add(new StartCommand());
-            // commandsList.Add(new HelpCommand());
-            // commandsList.Add(new AddCommand());
-            // commandsList.Add(new ShowAllCommand());
-            // commandsList.Add(new ShowOnePersoneCommand());
-            // commandsList.Add(new ShowAllDatseCommand());
+            commandsList.Add(new StartCommand());
+            commandsList.Add(new HelpCommand());
 
+            commandsList.Add(new InputDataCommand());
             //TODO: Add more commands
 
-            botClient = new TelegramBotClient(Token);
-            string hook = Url + "/api/message/update";
-            System.Console.WriteLine(hook);
+            // botClient = new TelegramBotClient(Token);
+            // string hook = Url + "/api/message/update";
+            
+            botClient = new TelegramBotClient(AppSettings.Key);
+            string hook = string.Format(AppSettings.Url, "api/message/update");
+            Console.WriteLine("LOG: WEBHook  - " + hook);
             await botClient.SetWebhookAsync(hook);
+
             return botClient;
         }
     }

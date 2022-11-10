@@ -53,12 +53,8 @@ namespace KursachBotRegata
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-
             //Bot Configurations
-            Bot.GetBotClientAsync(
-                Token:Configuration["BotInfo:Token"],
-                Url:Configuration["BotInfo:Url"]
-            ).Wait();
+            Bot.GetBotClientAsync().Wait();
         }
     }
 }
