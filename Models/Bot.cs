@@ -27,6 +27,7 @@ namespace KursachBotRegata.Models
             commandsList.Add(new HelpCommand());
             commandsList.Add(new ShowAllCommand());
             commandsList.Add(new AddCommand());
+            commandsList.Add(new ShowAllDatseCommand());
 
             commandsList.Add(new InputDataCommand());
             //TODO: Add more commands

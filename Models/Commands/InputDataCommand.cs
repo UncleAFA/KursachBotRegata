@@ -77,6 +77,42 @@ namespace KursachBotRegata.Models.Commands
 					Variables.InputDataList[message.Chat.Id].InsertDetail = message.Text.ToString();
 					Variables.StateList[message.Chat.Id] = Variables.State.GetSheckInfo;
 					break;
+
+				case Variables.State.GetDatePeriods:
+					string[] DatesArr= message.Text.ToString().Split('-');
+					
+					if(DatesArr.Count() != 2 | !DateTime.TryParse(DatesArr[0],out DateTime start) | !DateTime.TryParse(DatesArr[1],out DateTime end))
+					{
+						await botClient.SendTextMessageAsync(
+							chatId: message.Chat.Id,
+							text: "Введите повторно две даты обращая внимание на формат(ДД.ММ.ГГГГ-ДД.ММ.ГГГГ)",
+							parseMode: ParseMode.Markdown
+						);
+						break;
+					}
+					if(start > end)
+					{
+						await botClient.SendTextMessageAsync(
+							chatId: message.Chat.Id,
+							text: "Введите повторно две даты обращая внимание на формат(ДД.ММ.ГГГГ-ДД.ММ.ГГГГ) \n Первая дата должна быть меньше второй",
+							parseMode: ParseMode.Markdown
+						);
+						break;
+					}
+
+					DataTable dtPoints = new DataTable();
+			        dtPoints = DBWorker.SelectCommand("fio, points", "listrecords", $"WHERE listrecords.group = '{Variables.InputDataList[message.Chat.Id].Group}' AND listrecords.date BETWEEN '{start.Year}-{start.Month}-{start.Day}' AND '{end.Year}-{end.Month}-{end.Day}'");
+
+                    DataTable dtUsers = new DataTable();
+			        dtUsers = DBWorker.SelectCommand("fio", "users", $"WHERE users.group = '{Variables.InputDataList[message.Chat.Id].Group}' AND post = '3'");
+
+                    await botClient.SendTextMessageAsync(
+                        chatId: message.Chat.Id, 
+                        text: $"Данные на период {start.ToShortDateString()} - {end.ToShortDateString()}\n" + EditTextMessage( dtPoints, dtUsers), 
+                        parseMode: ParseMode.Markdown
+                    );
+					Variables.StateList[message.Chat.Id] = Variables.State.None;
+					break;
 				
 			}
 		}
@@ -159,5 +195,46 @@ namespace KursachBotRegata.Models.Commands
 				parseMode: ParseMode.Markdown
 			);
 		}
+
+		private string EditTextMessage(DataTable dtPoints, DataTable dtUsers)
+        {
+            if (dtPoints.Rows.Count <= 0)
+               return "Данных нет";
+
+            if (dtUsers.Rows.Count <= 0)
+               return "Данных нет";
+
+            List<UsersListWithPoints> UsersList = new List<UsersListWithPoints>();
+            foreach (DataRow row in dtUsers.Rows)
+            {
+                UsersListWithPoints User = new UsersListWithPoints();
+                User.Name = row["fio"].ToString();
+                UsersList.Add(User);
+            }
+            UsersList.Add(new UsersListWithPoints(){Name = "Весь класс"});
+            UsersList.Add(new UsersListWithPoints(){Name = "Общий счет"});
+
+            foreach (DataRow row in dtPoints.Rows)
+            {
+                for (int i = 0; i < UsersList.Count; i++)
+                {
+                    if(row["fio"].ToString() == UsersList[i].Name)
+                    {
+                        System.Console.WriteLine(float.Parse(row["points"].ToString()));
+                        UsersList[i].Point += float.Parse(row["points"].ToString());
+                        UsersList[UsersList.Count-1].Point += float.Parse(row["points"].ToString()); 
+                    }
+                }
+            }
+
+            string OutPut = "";
+
+            foreach (var item in UsersList)
+            {
+                OutPut += $"{item.Name} \t = \t {item.Point.ToString()}\n";
+            }
+
+            return OutPut;
+        }
 	}
 }

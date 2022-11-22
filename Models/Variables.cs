@@ -14,7 +14,8 @@ namespace KursachBotRegata.Models
             GetFioInsert,
             GetPontInsert,
             GetDetailInsert,
-            GetSheckInfo
+            GetSheckInfo,
+            GetDatePeriods
         }
     }
 }
