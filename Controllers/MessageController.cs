@@ -23,7 +23,7 @@ namespace KursachBotRegata.Controllers
         [HttpPost]
         public async Task<OkResult> Post([FromBody] object update)
         {
-            Console.WriteLine("Сообщение дошло!");
+            Console.WriteLine("Сообщение дошло!");//Лишний код
             var upd = JsonConvert.DeserializeObject<Update>(update.ToString());
             if (upd == null) 
                 return Ok();
@@ -33,10 +33,15 @@ namespace KursachBotRegata.Controllers
             switch (upd.Type)
             {
                 case UpdateType.Message:
+                    if(upd.Message.Text == null)
+                        return Ok();
                     if(!Variables.StateList.ContainsKey(upd.Message.Chat.Id))
+                    {
                         Variables.StateList[upd.Message.Chat.Id] = Variables.State.None;
+                        Variables.InputDataList[upd.Message.Chat.Id] = new InputInfo();
+                    }
 
-                    Console.WriteLine(upd.Message.Text);
+                    Console.WriteLine(upd.Message.Text);//Лишний код
                     foreach (var command in Bot.Commands)
                     {
                         if (command.Contains(upd.Message))
@@ -52,7 +57,11 @@ namespace KursachBotRegata.Controllers
 
                 case UpdateType.CallbackQuery:
                     if(!Variables.StateList.ContainsKey(upd.CallbackQuery.Message.Chat.Id))
+                    {
                         Variables.StateList[upd.Message.Chat.Id] = Variables.State.None;
+                        Variables.InputDataList[upd.Message.Chat.Id] = new InputInfo();
+                    }
+
                     var message = upd.CallbackQuery;
                     var commands = new CallBackQueryCommand();
                     await commands.Execute(message, botClient);

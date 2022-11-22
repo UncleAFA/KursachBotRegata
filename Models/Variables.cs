@@ -10,7 +10,11 @@ namespace KursachBotRegata.Models
         {
             None,
             GetLogin,
-            GetPassword
+            GetPassword,
+            GetFioInsert,
+            GetPontInsert,
+            GetDetailInsert,
+            GetSheckInfo
         }
     }
 }

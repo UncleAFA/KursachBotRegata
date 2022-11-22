@@ -8,6 +8,7 @@ namespace KursachBotRegata.Models
     {
         public static DataTable SelectCommand(string columns, string table, string complement)
         {   
+            System.Console.WriteLine(@$"SELECT {columns} FROM {table} {complement}");
             DataTable dt = new DataTable();
             try
             {
@@ -28,6 +29,49 @@ namespace KursachBotRegata.Models
             }
             
             return dt;
+        }
+
+        public static void UpdateCommand(string columns, string table, string complement)
+        {
+            try
+            {
+                using (var conn = new NpgsqlConnection(AppSettings.ConnString))
+                {
+                    conn.Open();
+                    using (var command = new NpgsqlCommand(@$"UPDATE {table} SET {columns} WHERE {complement}", conn))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DataBase - " + ex);
+            }
+        }
+
+        public static void InsertCommand(string columns, string table, string values)
+        {   System.Console.WriteLine(@$"INSERT INTO {table} {columns} VALUES ({values})");
+            
+            try
+            {
+                using (var conn = new NpgsqlConnection(AppSettings.ConnString))
+                {
+                    conn.Open();
+                    using (var command = new NpgsqlCommand(@$"INSERT INTO {table} {columns} VALUES ({values})", conn))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DataBase - " + ex);
+            }
+
+            return;
         }
     }
 }

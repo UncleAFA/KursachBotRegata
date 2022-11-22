@@ -33,6 +33,7 @@ namespace KursachBotRegata.Models.Commands
                     parseMode: ParseMode.Markdown
                 );
                 Variables.StateList[message.Chat.Id] = Variables.State.GetLogin;
+                Variables.InputDataList[message.Chat.Id] = new InputInfo();
             }
             else{
                 var keyboard = new InlineKeyboardMarkup

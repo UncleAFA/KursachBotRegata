@@ -26,7 +26,7 @@ namespace KursachBotRegata.Models.Commands
                 // TODO: реализовать доступность команд от должности User
                 await botClient.SendTextMessageAsync(
                     chatId:message.Chat.Id,
-                    text: "Доступные вам команды команды:\n/start - Старт(приветствие) \n/help - помощь", 
+                    text: "Доступные вам команды:\n/start - Старт(приветствие) \n/help - помощь", 
                     parseMode: ParseMode.Markdown
                 );
             }
