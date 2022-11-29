@@ -47,7 +47,6 @@ namespace KursachBotRegata.Controllers
                         if (command.Contains(upd.Message))
                         {
                             await command.Execute(upd.Message, botClient);
-                            System.Console.WriteLine(command.Name);
                             return Ok();
                         }
                     }

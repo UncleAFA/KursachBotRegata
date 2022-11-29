@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
+using Telegram.Bot.Types.InputFiles;
 
 namespace KursachBotRegata.Models.CallBacks
 {
@@ -65,7 +67,42 @@ namespace KursachBotRegata.Models.CallBacks
 						Variables.StateList[message.Message.Chat.Id] = Variables.State.None;
 					}
 					break;
-				
+
+				case Variables.State.GetPointsOnePersone:					
+					DataTable dtPoints = new DataTable();
+			        dtPoints = DBWorker.SelectCommand("id, fio, points,date,details", "listrecords", $"WHERE listrecords.group = '{Variables.InputDataList[message.Message.Chat.Id].Group}' AND fio = '{message.Data.ToString()}'");
+
+					if (dtPoints.Rows.Count <= 0)
+					{
+						await botClient.SendTextMessageAsync(
+							chatId: message.Message.Chat.Id,
+							text: "Данных нет",
+							parseMode: ParseMode.Markdown
+						);
+					
+						Variables.StateList[message.Message.Chat.Id] = Variables.State.None;
+						break;
+					}
+					string OutText = "";
+					foreach (DataRow row in dtPoints.Rows)
+					{
+								// UsersList[i].Point += float.Parse(row["points"].ToString());
+								// UsersList[UsersList.Count-1].Point += float.Parse(row["points"].ToString());
+						OutText +=$"(id = {row["id"].ToString()}) {row["date"].ToString()} - {row["points"].ToString()} - {row["details"].ToString()} \n";
+					}
+
+					System.IO.File.WriteAllText(Environment.CurrentDirectory + $@"\file{message.Message.Chat.Id}.txt", OutText);
+					using (var stream = System.IO.File.OpenRead(Environment.CurrentDirectory + $@"\file{message.Message.Chat.Id}.txt"))
+					{
+						InputOnlineFile iof = new InputOnlineFile(stream);
+						iof.FileName = $"{message.Data}{DateTime.Now.ToShortDateString()}.txt";
+						await botClient.SendDocumentAsync(message.Message.Chat.Id, iof);
+					}          
+					
+					
+					System.IO.File.Delete(Environment.CurrentDirectory + $@"\file{message.Message.Chat.Id}.txt");
+					Variables.StateList[message.Message.Chat.Id] = Variables.State.None;
+					break;
 			}
 		}
 	}

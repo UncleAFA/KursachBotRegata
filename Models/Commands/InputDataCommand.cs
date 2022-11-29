@@ -220,7 +220,6 @@ namespace KursachBotRegata.Models.Commands
                 {
                     if(row["fio"].ToString() == UsersList[i].Name)
                     {
-                        System.Console.WriteLine(float.Parse(row["points"].ToString()));
                         UsersList[i].Point += float.Parse(row["points"].ToString());
                         UsersList[UsersList.Count-1].Point += float.Parse(row["points"].ToString()); 
                     }
