@@ -16,7 +16,14 @@ namespace KursachBotRegata.Models
             GetDetailInsert,
             GetSheckInfo,
             GetDatePeriods,
-            GetPointsOnePersone
+            GetPointsOnePersone,
+            GetIdForDelete,
+            GetIdUserDelete,
+            GetFioNewUser,
+            GetLoginNewUser,
+            GetPassNewUser,
+            GetPostNewUser,
+            GetGroupNewUser
         }
     }
 }

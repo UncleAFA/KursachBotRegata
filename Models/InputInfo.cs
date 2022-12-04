@@ -19,5 +19,10 @@ namespace KursachBotRegata.Models
         public string InsertFio { get; set; }
         public string InsertPoint { get; set; }
         public string InsertDetail { get; set; }
+        public string InsertNewFio { get; set; }
+        public string InsertNewLogin { get; set; }
+        public string InsertNewPassword { get; set; }
+        public string InsertNewPost { get; set; }
+        public string InsertNewGroup { get; set; }
     }
 }

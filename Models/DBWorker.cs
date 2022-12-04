@@ -73,5 +73,29 @@ namespace KursachBotRegata.Models
 
             return;
         }
+
+        public static void DeleteCommand(string table, string complement)
+        {
+            System.Console.WriteLine(@$"DELETE FROM {table} WHERE {complement}");
+            
+            try
+            {
+                using (var conn = new NpgsqlConnection(AppSettings.ConnString))
+                {
+                    conn.Open();
+                    using (var command = new NpgsqlCommand(@$"DELETE FROM {table} WHERE {complement}", conn))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: DataBase - " + ex);
+            }
+
+            return;
+        }
     }
 }

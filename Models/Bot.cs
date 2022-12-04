@@ -29,6 +29,11 @@ namespace KursachBotRegata.Models
             commandsList.Add(new AddCommand());
             commandsList.Add(new ShowAllDatseCommand());
             commandsList.Add(new ShowOnePersoneCommand());
+            commandsList.Add(new DeletOneLine());
+            commandsList.Add(new ClearListRecords());
+            commandsList.Add(new DeletUser());
+            commandsList.Add(new SwohInfoUsers());
+            commandsList.Add(new AddNewUser());
 
             commandsList.Add(new InputDataCommand());
             //TODO: Add more commands
