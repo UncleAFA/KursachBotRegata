@@ -27,11 +27,18 @@ namespace KursachBotRegata.Models.Commands
             {
                 if(Variables.InputDataList[message.Chat.Id].Authorization)  
                 {
-
+                    var keyboard = new InlineKeyboardMarkup
+                    (
+                        new[]
+                        {
+                            InlineKeyboardButton.WithCallbackData("Выход в главное меню","Cancel"),
+                        }
+                    );
                     await botClient.SendTextMessageAsync(
                         chatId: message.Chat.Id, 
                         text: "Введите ID записи которую вы хотите удалить", 
-                        parseMode: ParseMode.Markdown
+                        parseMode: ParseMode.Markdown,
+                        replyMarkup: keyboard
                     );
 
                     Variables.StateList[message.Chat.Id] = Variables.State.GetIdForDelete;

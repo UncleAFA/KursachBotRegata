@@ -412,12 +412,45 @@ namespace KursachBotRegata.Models.Commands
 				Variables.InputDataList[message.Chat.Id].Post = row[1].ToString();
 				Variables.InputDataList[message.Chat.Id].Group = row[2].ToString();
 			}
-			
 			await botClient.SendTextMessageAsync(
 				chatId: message.Chat.Id,
-				text: $"Здравствуйте {Variables.InputDataList[message.Chat.Id].FioUser} \n\n\n\nВы в главном меню \nСписок доступных команд:",//TODO: добавить список доступных команд И информция о USERE
+				text: $"Здравствуйте {Variables.InputDataList[message.Chat.Id].FioUser} \n\n\n\nВы находитесь в главном меню",
 				parseMode: ParseMode.Markdown
 			);
+			string ListComandForUsers=  "Доступные вам команды:\n"+
+                                            "/start - Авторизация\n" +
+                                            "/help - список системных команд\n" +
+                                            "/showall - баллы всего коллектива\n"+
+                                            "/add - добавление новой заметки\n"+
+                                            "/showwithdates - показать баллы за промежуток времени\n"+
+                                            "/showonepersone - показать баллы одного человека из коллектива\n"+
+                                            "/deleteline - удалить заметку\n";
+
+            string ListComandForAdmin=  "Доступные вам команды:\n"+
+                                            "/start - Авторизация\n" +
+                                            "/help - список системных команд\n" +
+                                            "/clearlistrecords -очистка таблицы с заметками\n"+
+                                            "/deleteuser - удаление пользователя\n"+
+                                            "/swohinfousers - получение информации о пользователях\n"+
+                                            "/createnewuser - добавление нового пользователя";
+
+			switch (Variables.InputDataList[message.Chat.Id].Post)
+                {                        
+                    case "1":
+                        await botClient.SendTextMessageAsync(
+                            chatId:message.Chat.Id,
+                            text: ListComandForAdmin, 
+                            parseMode: ParseMode.Markdown
+                        );
+                        break;
+                    case "2":
+                        await botClient.SendTextMessageAsync(
+                            chatId:message.Chat.Id,
+                            text: ListComandForUsers, 
+                            parseMode: ParseMode.Markdown
+                        );
+                        break;
+                }
 		}
 
 		private string EditTextMessage(DataTable dtPoints, DataTable dtUsers)

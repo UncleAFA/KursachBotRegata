@@ -69,6 +69,8 @@ namespace KursachBotRegata.Models.Commands
 
         private string EditTextMessage(DataTable dtPoints, DataTable dtUsers)
         {
+            string OutPut = "";
+
             if (dtPoints.Rows.Count <= 0)
                return "Данных нет";
 
@@ -97,7 +99,7 @@ namespace KursachBotRegata.Models.Commands
                 }
             }
 
-            string OutPut = "";
+            
 
             foreach (var item in UsersList)
             {

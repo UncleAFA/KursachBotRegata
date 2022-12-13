@@ -25,11 +25,13 @@ namespace KursachBotRegata.Models
             commandsList = new List<Command>();
             commandsList.Add(new StartCommand());
             commandsList.Add(new HelpCommand());
+
             commandsList.Add(new ShowAllCommand());
             commandsList.Add(new AddCommand());
             commandsList.Add(new ShowAllDatseCommand());
             commandsList.Add(new ShowOnePersoneCommand());
             commandsList.Add(new DeletOneLine());
+
             commandsList.Add(new ClearListRecords());
             commandsList.Add(new DeletUser());
             commandsList.Add(new SwohInfoUsers());
@@ -37,9 +39,6 @@ namespace KursachBotRegata.Models
 
             commandsList.Add(new InputDataCommand());
             //TODO: Add more commands
-
-            // botClient = new TelegramBotClient(Token);
-            // string hook = Url + "/api/message/update";
             
             botClient = new TelegramBotClient(AppSettings.Key);
             string hook = string.Format(AppSettings.Url, "api/message/update");
