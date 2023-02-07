@@ -39,3 +39,8 @@ C:\Users\vedop\Documents\GitHub\KursachBotRegata\obj\Debug\netcoreapp3.1\Kursach
 C:\Users\vedop\Documents\GitHub\KursachBotRegata\obj\Debug\netcoreapp3.1\KursachBotRegata.dll
 C:\Users\vedop\Documents\GitHub\KursachBotRegata\obj\Debug\netcoreapp3.1\KursachBotRegata.pdb
 C:\Users\vedop\Documents\GitHub\KursachBotRegata\obj\Debug\netcoreapp3.1\KursachBotRegata.genruntimeconfig.cache
+C:\Users\vedop\Documents\GitHub\KursachBotRegata\obj\Debug\netcoreapp3.1\staticwebassets\KursachBotRegata.StaticWebAssets.Pack.cache
+C:\Users\vedop\Documents\GitHub\KursachBotRegata\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.KursachBotRegata.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\vedop\Documents\GitHub\KursachBotRegata\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.build.KursachBotRegata.props
+C:\Users\vedop\Documents\GitHub\KursachBotRegata\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildMultiTargeting.KursachBotRegata.props
+C:\Users\vedop\Documents\GitHub\KursachBotRegata\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildTransitive.KursachBotRegata.props
