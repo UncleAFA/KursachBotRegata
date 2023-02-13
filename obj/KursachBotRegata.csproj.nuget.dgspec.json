@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vedop\\Documents\\GitHub\\KursachBotRegata\\KursachBotRegata.csproj": {}
+    "C:\\GitHubProjects\\KursachBotRegata\\KursachBotRegata.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vedop\\Documents\\GitHub\\KursachBotRegata\\KursachBotRegata.csproj": {
+    "C:\\GitHubProjects\\KursachBotRegata\\KursachBotRegata.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vedop\\Documents\\GitHub\\KursachBotRegata\\KursachBotRegata.csproj",
+        "projectUniqueName": "C:\\GitHubProjects\\KursachBotRegata\\KursachBotRegata.csproj",
         "projectName": "KursachBotRegata",
-        "projectPath": "C:\\Users\\vedop\\Documents\\GitHub\\KursachBotRegata\\KursachBotRegata.csproj",
+        "projectPath": "C:\\GitHubProjects\\KursachBotRegata\\KursachBotRegata.csproj",
         "packagesPath": "C:\\Users\\vedop\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vedop\\Documents\\GitHub\\KursachBotRegata\\obj\\",
+        "outputPath": "C:\\GitHubProjects\\KursachBotRegata\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

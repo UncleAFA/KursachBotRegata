@@ -61,7 +61,7 @@ namespace KursachBotRegata.Models.Commands
 
         public static void readfile()
         {
-            string fileName = @"C:\2022.txt";
+            string fileName = @"C:\GitHubProjects\KursachBotRegata\Все данные для БД RegataBot.txt";
 
             List<string> lines = System.IO.File.ReadLines(fileName).ToList();
             // Console.WriteLine(String.Join(Environment.NewLine, lines));
