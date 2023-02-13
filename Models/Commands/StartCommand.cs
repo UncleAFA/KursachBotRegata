@@ -82,7 +82,7 @@ namespace KursachBotRegata.Models.Commands
                 // }
                 DateTime test = new DateTime(int.Parse(datatostr[2].ToString()),int.Parse(datatostr[0].ToString()),int.Parse(datatostr[1].ToString()));
                 // System.Console.WriteLine(test);
-                DBWorker.InsertCommand("","listrecords",$@"'{stringssss[0].ToString().Trim(' ')}','3','{stringssss[1].ToString().Trim(' ')}','{stringssss[2].ToString().Trim(' ')}','{test.Year}-{test.Month}-{test.Day}'");
+                DBWorker.InsertCommand("","listrecords",$@"'{stringssss[0].ToString().Trim(' ')}','3','{stringssss[1].ToString().Replace(',','.').Trim(' ')}','{stringssss[2].ToString().Trim(' ')}','{test.Year}-{test.Month}-{test.Day}'");
 
                     
             

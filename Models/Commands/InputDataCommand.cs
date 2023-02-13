@@ -38,7 +38,7 @@ namespace KursachBotRegata.Models.Commands
 					break;
 
 				case Variables.State.GetPontInsert:
-					if (float.TryParse(message.Text.ToString(), out float res) )
+					if (float.TryParse(message.Text.ToString().Replace(',','.'), out float res) )
 					{
 						await botClient.SendTextMessageAsync(
 							chatId: message.Chat.Id,
@@ -52,7 +52,7 @@ namespace KursachBotRegata.Models.Commands
 					{
 						await botClient.SendTextMessageAsync(
 							chatId: message.Chat.Id,
-							text: "Некорректный формат \nПовторите ввод количества баллов учитывая формат(формат: -5,0 | + 5,9)",
+							text: "Некорректный формат \nПовторите ввод количества баллов учитывая формат(формат: -5.0 | + 5.9)",
 							parseMode: ParseMode.Markdown
 						);
 					}
@@ -128,7 +128,7 @@ namespace KursachBotRegata.Models.Commands
 						Variables.StateList[message.Chat.Id] = Variables.State.None;
 						break;
 					}
-					if (!int.TryParse(message.Text.ToString(),out int inres))
+					if (!int.TryParse(message.Text.ToString().Replace(',','.'),out int inres))
 					{
 						await botClient.SendTextMessageAsync(
                         chatId: message.Chat.Id, 
@@ -190,7 +190,7 @@ namespace KursachBotRegata.Models.Commands
 						Variables.StateList[message.Chat.Id] = Variables.State.None;
 						break;
 					}
-					if (!int.TryParse(message.Text.ToString(),out int inress))
+					if (!int.TryParse(message.Text.ToString().Replace(',','.'),out int inress))
 					{
 						await botClient.SendTextMessageAsync(
                         chatId: message.Chat.Id, 

@@ -8,7 +8,8 @@ CREATE TABLE public.listrecords (
 	points varchar NOT NULL,
 	details varchar NULL,
 	"date" timestamp NOT NULL,
-	id int8 NOT NULL GENERATED ALWAYS AS IDENTITY
+	id int8 NOT NULL GENERATED ALWAYS AS IDENTITY,
+	CONSTRAINT listrecords_pk PRIMARY KEY (id)
 );
 
 
