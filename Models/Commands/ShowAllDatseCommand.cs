@@ -31,7 +31,7 @@ namespace KursachBotRegata.Models.Commands
                 {
                     await botClient.SendTextMessageAsync(
                         chatId: message.Chat.Id, 
-                        text: "Введите две даты в формате(ДД.ММ.ГГГГ-ДД.ММ.ГГГГ)", 
+                        text: "Введите две даты в формате(ММ.ДД.ГГГГ-ММ.ДД.ГГГГ)", 
                         parseMode: ParseMode.Markdown
                     );
 

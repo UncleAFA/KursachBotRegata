@@ -85,7 +85,7 @@ namespace KursachBotRegata.Models.Commands
 					{
 						await botClient.SendTextMessageAsync(
 							chatId: message.Chat.Id,
-							text: "Введите повторно две даты обращая внимание на формат(ДД.ММ.ГГГГ-ДД.ММ.ГГГГ)",
+							text: "Введите повторно две даты обращая внимание на формат(ММ.ДД.ГГГГ-ММ.ДД.ГГГГ)",
 							parseMode: ParseMode.Markdown
 						);
 						break;
@@ -94,7 +94,7 @@ namespace KursachBotRegata.Models.Commands
 					{
 						await botClient.SendTextMessageAsync(
 							chatId: message.Chat.Id,
-							text: "Введите повторно две даты обращая внимание на формат(ДД.ММ.ГГГГ-ДД.ММ.ГГГГ) \n Первая дата должна быть меньше второй",
+							text: "Введите повторно две даты обращая внимание на формат(ММ.ДД.ГГГГ-ММ.ДД.ГГГГ) \n Первая дата должна быть меньше второй",
 							parseMode: ParseMode.Markdown
 						);
 						break;
