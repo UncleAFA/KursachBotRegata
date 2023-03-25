@@ -338,6 +338,42 @@ namespace KursachBotRegata.Models.Commands
 						parseMode: ParseMode.Markdown
 					);
 					break;
+
+				case Variables.State.GetAutoInputData:
+					List<string> lines = message.Text.ToString().Split("\n").ToList();
+					for (int i = 0; i < lines.Count; i++)
+					{
+						try
+						{
+							string[] stringssss = lines[i].ToString().Split('|');
+							string[] datatostr = stringssss[3].ToString().Split('/');
+							DateTime test = new DateTime(int.Parse(datatostr[2].ToString()), int.Parse(datatostr[0].ToString()), int.Parse(datatostr[1].ToString()));
+
+							if (!float.TryParse(stringssss[1].ToString().Replace(',', '.').Trim(' ').ToString().Replace(',', '.'), out float resul))
+							{
+								throw new Exception("Ошибка в формате баллов");
+							}
+
+							DBWorker.InsertCommand("", "listrecords", $@"'{stringssss[0].ToString().Trim(' ')}','3','{stringssss[1].ToString().Replace(',', '.').Trim(' ')}','{stringssss[2].ToString().Trim(' ')}','{test.Year}-{test.Month}-{test.Day}'");
+						}
+						catch (Exception e)
+						{
+							await botClient.SendTextMessageAsync(
+								chatId: message.Chat.Id,
+								text: $"Ошибка записи {i + 1}\n\n{lines[i]} ",
+								parseMode: ParseMode.Markdown
+							);
+
+							await botClient.SendTextMessageAsync(
+								chatId: message.Chat.Id,
+								text: $"Отправить это создателю \n{e.Message}",
+								parseMode: ParseMode.Markdown
+							);
+						}
+						
+					}
+					Variables.StateList[message.Chat.Id] = Variables.State.None;
+					break;
 			}
 		}
 
@@ -424,9 +460,10 @@ namespace KursachBotRegata.Models.Commands
                                             "/add - добавление новой заметки\n"+
                                             "/showwithdates - показать баллы за промежуток времени\n"+
                                             "/showonepersone - показать баллы одного человека из коллектива\n"+
-                                            "/deleteline - удалить заметку\n";
+                                            "/deleteline - удалить заметку\n"+
+											"/autoinput - атоматичесая запись данных\n";
 
-            string ListComandForAdmin=  "Доступные вам команды:\n"+
+			string ListComandForAdmin=  "Доступные вам команды:\n"+
                                             "/start - Авторизация\n" +
                                             "/help - список системных команд\n" +
                                             "/clearlistrecords -очистка таблицы с заметками\n"+

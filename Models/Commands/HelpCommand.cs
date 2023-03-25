@@ -30,9 +30,10 @@ namespace KursachBotRegata.Models.Commands
                                             "/add - добавление новой заметки\n"+
                                             "/showwithdates - показать баллы за промежуток времени\n"+
                                             "/showonepersone - показать баллы одного человека из коллектива\n"+
-                                            "/deleteline - удалить заметку\n";
+                                            "/deleteline - удалить заметку\n"+
+											"/autoinput - атоматичесая запись данных\n";
 
-                string ListComandForAdmin=  "Доступные вам команды:\n"+
+				string ListComandForAdmin=  "Доступные вам команды:\n"+
                                             "/start - Авторизация\n" +
                                             "/help - список системных команд\n" +
                                             "/clearlistrecords -очистка таблицы с заметками\n"+

@@ -55,10 +55,10 @@ namespace KursachBotRegata.Controllers
                     return Ok(); 
 
                 case UpdateType.CallbackQuery:
-                    if(!Variables.StateList.ContainsKey(upd.CallbackQuery.Message.Chat.Id))
+					if (!Variables.StateList.ContainsKey(upd.CallbackQuery.Message.Chat.Id))
                     {
-                        Variables.StateList[upd.Message.Chat.Id] = Variables.State.None;
-                        Variables.InputDataList[upd.Message.Chat.Id] = new InputInfo();
+                        Variables.StateList[upd.CallbackQuery.Message.Chat.Id] = Variables.State.None;
+                        Variables.InputDataList[upd.CallbackQuery.Message.Chat.Id] = new InputInfo();
                     }
 
                     var message = upd.CallbackQuery;

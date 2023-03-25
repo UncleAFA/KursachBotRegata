@@ -23,7 +23,8 @@ namespace KursachBotRegata.Models
             GetLoginNewUser,
             GetPassNewUser,
             GetPostNewUser,
-            GetGroupNewUser
+            GetGroupNewUser,
+            GetAutoInputData
         }
     }
 }
