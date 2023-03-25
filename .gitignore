@@ -2,7 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/KursachBotRegata.csproj
 .vs/
 .vscode/
 bin/
