@@ -70,7 +70,14 @@ namespace KursachBotRegata.Models.CallBacks
 
 				case Variables.State.GetPointsOnePersone:					
 					DataTable dtPoints = new DataTable();
-			        dtPoints = DBWorker.SelectCommand("id, fio, points,date,details", "listrecords", $"WHERE listrecords.group = '{Variables.InputDataList[message.Message.Chat.Id].Group}' AND fio = '{message.Data.ToString()}'");
+					if (message.Data.ToString() == "Все записи")
+					{
+						dtPoints = DBWorker.SelectCommand("id, fio, points,date,details", "listrecords", $"WHERE listrecords.group = '{Variables.InputDataList[message.Message.Chat.Id].Group}'");
+					}
+					else
+					{
+						dtPoints = DBWorker.SelectCommand("id, fio, points,date,details", "listrecords", $"WHERE listrecords.group = '{Variables.InputDataList[message.Message.Chat.Id].Group}' AND fio = '{message.Data.ToString()}'");
+					}			        
 
 					if (dtPoints.Rows.Count <= 0)
 					{

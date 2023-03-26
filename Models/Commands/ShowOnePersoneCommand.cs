@@ -72,7 +72,7 @@ namespace KursachBotRegata.Models.Commands
             DataTable dt = new DataTable();
             dt = DBWorker.SelectCommand("fio", "users", $"WHERE post = '3' AND users.group = '{Group}'");
 
-            InlineKeyboardButton[][] keyboard = new InlineKeyboardButton[dt.Rows.Count+2][];
+            InlineKeyboardButton[][] keyboard = new InlineKeyboardButton[dt.Rows.Count+3][];
 
             int i = 0;
             foreach (DataRow row in dt.Rows)
@@ -89,7 +89,12 @@ namespace KursachBotRegata.Models.Commands
                 InlineKeyboardButton.WithCallbackData("Весь класс","Весь класс"),
             };
             i++;
-            keyboard[i] = new[]
+			keyboard[i] = new[]
+		    {
+				InlineKeyboardButton.WithCallbackData("Все записи","Все записи"),
+			};
+			i++;
+			keyboard[i] = new[]
             {
                 InlineKeyboardButton.WithCallbackData("Выход в главное меню","Cancel"),
             };
