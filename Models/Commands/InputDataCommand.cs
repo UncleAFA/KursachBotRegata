@@ -372,6 +372,11 @@ namespace KursachBotRegata.Models.Commands
 						}
 						
 					}
+					await botClient.SendTextMessageAsync(
+								chatId: message.Chat.Id,
+								text: $"Данные занесены",
+								parseMode: ParseMode.Markdown
+							);
 					Variables.StateList[message.Chat.Id] = Variables.State.None;
 					break;
 			}

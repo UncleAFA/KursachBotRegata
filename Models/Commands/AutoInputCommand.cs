@@ -36,7 +36,7 @@ namespace KursachBotRegata.Models.Commands
 					);
 					await botClient.SendTextMessageAsync(
 						chatId: message.Chat.Id,
-						text: "Введите ваши данные для автоматического ввода",
+						text: "Введите ваши данные для автоматического ввода\n Формат Федя| +1|test| 03/15/2023(ММ/ДД/ГГГГ)",
 						parseMode: ParseMode.Markdown,
 						replyMarkup: keyboard
 					);
